@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Naughty Numbers</title>
+</head>
+
+<body>
+    Naughty Numbers
+    <script type='text/javascript'>
+    function main(input) {
+        var givenInput = input;
+        givenInput = givenInput.split('\n');
+        var queries = givenInput[0];
+
+        var checkIfNaughty = function(num) {
+        	if( num === 2 || num === 3 || num === 1 ){
+        		return true;
+        	}
+        	var primeFactors = [];
+
+        	var halfIt = function(num){
+        		return num/2;
+        	}
+
+        	var half = num;
+        	while( half % 2 === 0 ){
+        		half = halfIt(half);
+        		if(primeFactors.indexOf(2) === -1) primeFactors.push(2);
+        	} 
+
+            var isPrime = function(n) {
+                for (var p = 2; p <= Math.sqrt(n); p++) {
+                    if (n % p === 0) return false;
+                }
+                return true;
+            }
+
+            for (var k = 3; k <= num; k++) {
+                if (isPrime(k) && num % k === 0) {
+                    primeFactors.push(k);
+                }
+            }
+            var digits = num.toString().split('').length;
+            if (digits === primeFactors.length) return true;
+            else return false;
+        }
+
+        var calculatePrimeFactors = function(min, max) {
+            var count = 0;
+            for (var j = min; j <= max; j++) {
+                if (checkIfNaughty(j)) {
+                    count++;
+                }
+            }
+            console.log(count);
+        }
+
+        for (var i = 1; i <= queries; i++) {
+            var givenQuery = givenInput[i].split(' ');
+            calculatePrimeFactors(Number(givenQuery[0]), Number(givenQuery[1]));
+        }
+    }
+
+    main("3\n1 10\n55 59\n100 105");
+    </script>
+</body>
+
+</html>
