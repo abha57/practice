@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+var string = new String();
+	
+	string += "How can mirrors be real if our eyes aren't real";
+
+String.prototype.toJadenCase = function () {
+  var str = this;
+  
+  var str = str.split(' ');
+  for(var i = 0; i < str.length; i++){
+  	str[i] = str[i].split('');
+  	str[i][0] = str[i][0].toUpperCase();
+  	str[i].join('');
+  	console.log(str[i]);
+  }
+    return str.join(' ');
+  //var words = str.split(' ');
+   // for(var i = 0; i < words.length; i++) {
+   //        var letters = words[i].split('');
+   //        letters[0] = letters[0].toUpperCase();
+   //        console.log(letters.join(''));
+   //        words[i] = letters.join('');
+   //        console.log(words[i]);
+   //   }
+     //return words.join(' ');
+
+
+ //return str.join(' ');
+};
+
+
+console.log((string.toJadenCase()));
+
+
+
+</script>
+</html>
