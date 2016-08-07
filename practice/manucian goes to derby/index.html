@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Derby</title>
+</head>
+<body>
+	<script>
+		function main(input) {
+        var givenInput = input;
+        givenInput = givenInput.split('\n');
+        var conditions = givenInput[0].split(' '),
+         numberOfNodes = Number(conditions[0]),
+         roads = Number(conditions[1]),
+         queries = Number(conditions[2]);
+
+         var Road = function(start, end){
+         	this.start = start;
+         	this.end = end;
+         }
+         var particularRoad = [];
+         var count = 0;
+         for( var i = 1; i <= roads; i++){
+         	var start = Number(givenInput[i].split(' ')[0]),
+         	end = Number(givenInput[i].split(' ')[1]);
+         	particularRoad.push(new Road(start, end)); 
+         	if(i === roads) count = i;
+         }
+         var timeArray = [];
+         for( var j = 0; j < queries; j++ ){
+         	timeArray.push(Number(givenInput[++count]));
+         }
+
+         console.log(particularRoad);
+         console.log(timeArray);
+    }
+
+    main("4 3 2\n1 2\n2 3\n4 3\n1\n20");
+	</script>
+</body>
+</html>
