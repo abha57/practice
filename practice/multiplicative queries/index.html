@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplicative Queries</title>
+</head>
+
+<body>
+    <script>
+    function main(input) {
+        var givenInput = input;
+        givenInput = givenInput.split('\n');
+        var entries = givenInput[0].split(' '),
+            arraySize = Number(entries[0]),
+            maximumValue = Number(entries[1]);
+        querySize = Number(entries[2]),
+            arrayA = givenInput[1],
+        arrayFunc = givenInput[2],
+        queries = [],
+        finalProduct = 1;
+        var Query = function(min, max) {
+            this.min = min;
+            this.max = max;
+        }
+        for (var i = 3; i < querySize + 3; i++) {
+            var entry = givenInput[i].split(' ');
+            var min = Number(entry[0]),
+                max = Number(entry[1]);
+            queries.push(new Query(min, max));
+        }
+
+        function findOccurrence(element, start, end){
+        	var count = 0;
+        	for(var i = start; i <= end; i++){
+        		if(arrayA[i] === element){
+        			count++;
+        		}
+        	}
+        	return count;
+        }
+
+
+        	queries.map(function(query){
+        		var start = query.min - 1,
+        			end = query.max - 1;
+        			var product = 1;
+        			for(var i = 1; i <= maximumValue; i++){
+        				product *= arrayFunc[findOccurrence(i, start, end)];
+        			}
+
+        			finalProduct *= product;
+        	});
+        	console.log(finalProduct);
+    }
+
+    main('5 5 3\n1 2 2 3 3\n1 1 2 3 4 5\n2 4\n1 2\n4 5');
+    </script>
+</body>
+
+</html>
