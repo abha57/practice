@@ -19,6 +19,8 @@
         arrayFunc = givenInput[2],
         queries = [],
         finalProduct = 1;
+        arrayA = arrayA.split(' ').map(Number);
+        arrayFunc = arrayFunc.split(' ').map(Number);
         var Query = function(min, max) {
             this.min = min;
             this.max = max;
@@ -32,8 +34,8 @@
 
         function findOccurrence(element, start, end){
         	var count = 0;
-        	for(var i = start; i <= end; i++){
-        		if(arrayA[i] === element){
+        	for(var j = start; j <= end; j++){
+        		if(arrayA[j] === element){
         			count++;
         		}
         	}
@@ -45,13 +47,15 @@
         		var start = query.min - 1,
         			end = query.max - 1;
         			var product = 1;
-        			for(var i = 1; i <= maximumValue; i++){
-        				product *= arrayFunc[findOccurrence(i, start, end)];
+        			for(var j = 1; j <= maximumValue; j++){
+        				product *= arrayFunc[findOccurrence(j, start, end)];
         			}
 
         			finalProduct *= product;
         	});
+            console.log(Number.isSafeInteger(finalProduct));
         	console.log(finalProduct);
+            console.log(Math.pow(2,53));
     }
 
     main('5 5 3\n1 2 2 3 3\n1 1 2 3 4 5\n2 4\n1 2\n4 5');
