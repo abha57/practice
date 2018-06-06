@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Camel casing</title>
+</head>
+<body>
+	<input type="text" onblur="camelCase()" id="inputOne">
+	<script type="text/javascript">
+		var camelCase = function(e){
+			var input = document.getElementById('inputOne').value;
+			input = input.split(' ');
+			if(input && input.length){
+				let inputLen = input.length;
+				for(let i = 1; i < inputLen; i++){
+					input[i] = input[i].charAt(0).toUpperCase() + input[i].substr(1);
+				}
+			}
+			input = input.join('');
+			console.log(input);
+		}
+	</script>
+</body>
+</html>

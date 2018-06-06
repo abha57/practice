@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		let nodes = [2, 9, 4, 5, 1, 7, 8],
+		startingNodes = [2, 9, 4, 5, 1, 7, 8],
+		endingNodes = [9, 4, 5, 1, 7, 8, 2];
+		let Node = function(num){
+			this.value = num;
+			this.degree = 0;
+		};
+		let nodesArray = [];
+		let nodesLen = nodes.length;
+		nodes.forEach((val) => {
+			nodesArray.push(new Node(val));
+		});
+		console.log(nodesArray);
+		Array.prototype.match = function(num){
+			for(let i = 0; i < this.length; i++){
+				if(this[i].value === num){
+					return this[i];
+				}
+			}
+			return null;
+		}
+		let findNode = num =>  nodesArray.match(num);
+		let createLink = (start, end) => {
+			let startNode = findNode(start);
+			let endNode = findNode(end);
+			if(startNode && endNode){
+				startNode.degree++;
+				endNode.degree++;
+			}
+		}
+		if(startingNodes.length === endingNodes.length){
+			let startingNodesLen = startingNodes.length;
+			for(var i = 0; i < startingNodesLen; i++){
+				createLink(startingNodes[i], endingNodes[i]);
+			}
+		}
+		let busTopology = () => {
+			let linear = 0, quadratic = 0;
+			nodesArray.forEach((node) => {
+				if(node.degree === 2){
+					quadratic++;
+				}
+				else if(node.degree === 1){
+					linear++;
+				}
+			});
+			if(quadratic === nodesArray.length - 2 && linear === 2){
+				return true;
+			} else{
+				return false;
+			}
+		}
+		let ringTopology = () => {
+			let quadratic = 0;
+			nodesArray.forEach((node) => {
+				if(node.degree === 2){
+					quadratic++;
+				}
+			});
+			if(quadratic === nodesArray.length){
+				return true;
+			} else{
+				return false;
+			}
+		}
+		let starTopology = () => {
+			let linear = 0, poly = 0;
+			nodesArray.forEach((node) => {
+				if(node.degree >= 2){
+					poly++;
+				}
+				else if(node.degree === 1){
+					linear++;
+				}
+			});
+			if(linear === nodesArray.length - 1 && poly === 1){
+				return true;
+			} else{
+				return false;
+			}
+		}
+		let checkTreeType = () => {
+			if(busTopology()){
+				return 'BUS';
+			}
+			else if(ringTopology()){
+				return 'RING';
+			}
+			else if(starTopology()){
+				return 'STAR';
+			}
+		}
+		(() => {
+			switch(checkTreeType()){
+				case 'BUS': console.log('This is a BUS topology');
+				break;
+				case 'RING': console.log('This is a RING topology');
+				break;
+				case 'STAR': console.log('This is a STAR topology');
+				break;
+				default: console.log('This doesnt follow any topology');
+			}
+		})();
+
+	</script>
+</body>
+</html>

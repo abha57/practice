@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Document</title>
+
+</head>
+<body>
+	<div id="first"></div>
+
+<input type="text" id="inputStrings"/>
+<button onclick="updateStrings()">Enter strings separated by commma</button>
+<input type="text" id="matchStrings" onchange="findStrings()"/>
+<script>
+ 	var enteredStings = [];
+	var updateStrings = function () {
+		enteredStings = document.getElementById('inputStrings').value.split(',');
+	};
+	var findStrings = function(){
+		var enteredValue = document.getElementById('matchStrings').value;
+		if(!enteredStings || !enteredValue){
+			return false;
+		} else{
+			//return enteredStings.indexOf(enteredValue);
+			console.log(enteredStings.indexOf(enteredValue));
+		}
+	}
+</script>
+</body>
+</html>

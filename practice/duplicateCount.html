@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<div id="first"></div>
+
+<input type="text" id="inputOne"/>
+<button onclick="init()">Try</button>
+<span id="todo">todo</span>
+
+<script>
+var CountObj = function(value){
+  this.value = value;
+  this.count = 1;
+};
+console.log(Object.getOwnPropertyNames(CountObj));
+var obj = new CountObj('ap');
+console.log(Object.getOwnPropertyNames(obj));
+var elementsFound;
+var message = "<ul>";
+
+var elementFound = function(elem){
+  for(var j = 0; j < elementsFound.length; j++){
+  	if(elementsFound[j].value === elem){
+  		return j;
+  		break;
+  	}
+  }
+}
+var calculateDuplicate = function(array){
+  if(array.length === 0){
+    return null;
+  }
+  else{
+    for(var i = 0; i < array.length; i++){
+      var index = elementFound(array[i]);
+       if(index || index === 0){
+         elementsFound[index].count++;
+       }
+      else{
+        elementsFound[elementsFound.length] = new CountObj(array[i]);
+      }
+    }
+  }
+  elementsFound.forEach(function(item){
+	if(item.value != " "){
+		message = message + "<li>" + item.value + " : " + item.count + "</li>";
+	}
+  });
+};
+var nonRepeatedCharacters = function(array){
+	var nonRepeated = "";
+	array.forEach(function(item){
+		if(item.count === 1){
+			nonRepeated = nonRepeated + item.value + ", ";
+		}
+	});
+	if(nonRepeated.length >= 1){
+		nonRepeated = nonRepeated = "Non repeated items are " + nonRepeated;
+	}
+	else{
+		nonRepeated = "No non repeated elements";
+	}
+	return nonRepeated;
+}
+var reverseString = function(elements){
+	var i, j, temp;
+	for(i = 0, j = elements.length - 1; i < j; i++, j--){
+		temp = elements[i];
+		elements[i] = elements[j];
+		elements[j] = temp;
+	}
+ 	return elements;
+}
+var printElements = function(array){
+	if(array.length === 1){
+		return array[0].value;
+	}
+	else{
+		var val = array[0].value;
+		array.splice(0, 1);
+		return val + ", " + printElements(array);
+	}
+};
+
+var init = function(){
+elementsFound = [];
+  var encodedString;
+  var string = document.getElementById('inputOne').value;
+  if(!string){
+  	message = message + "Please enter a valid string";
+  }
+  else{
+  	var reversedString = reverseString(string.split(' '));
+  	stringOne = calculateDuplicate(string.split(''));
+  message + "</ul>";
+  }
+  message = message + nonRepeatedCharacters(elementsFound);
+  message = message + reversedString;
+  //var elements = printElements(elementsFound);
+  //message = message + elements;
+  var output = document.getElementById('first');
+  output.innerHTML = message;
+}
+var addAny = function(any){
+  return function(num){
+    return num + any;
+  }
+}
+var addThreeTo = addAny(3);
+console.log(addThreeTo(5));
+
+var debounce = function(fn, delay){
+  var timer = null;
+  return function(){
+    var self = this;
+    var args = arguments;
+    timer = setInterval(function(){
+      fn.apply(self, args);
+    }, delay);
+    clearTimeout(timer);
+  }
+}
+var ele = document.getElementById('todo');
+ele.addEventListener('click', debounce(callOnClick, 500));
+var callOnClick = function(event, ele){
+  console.log(ele.innerHTML);
+  console.log(even.target);
+}
+var arr1 = [5,5,5,5,5,5];
+console.log(Object.getOwnPropertyNames(arr1));
+(function(){
+  var foo = arr1;
+  foo[2] = 6;
+})();
+console.log(arr1);
+function memoizeFunction(func) {
+     var cache = {};
+     return function() {
+          var key = arguments[0];
+          if(cache[key]) {
+          return cache[key];
+          }
+          else {
+          var val = func.apply(this, arguments);
+          cache[key] = val;
+          return val;
+          }
+     };
+}
+
+
+var fibonacci = memoizeFunction(function(n) {
+     return (n === 0 || n === 1) ? n : fibonacci(n - 1) + fibonacci(n - 2);
+});
+console.log(fibonacci(7));
+
+
+var factoryPattern = function(passedName, age, type){
+  var uniqueInstance = null;
+  var construct =  function(){
+    var name = passedName;
+    var age = age;
+    var type = type;
+    var getDetails =  function(){
+      return name + " has an age of " + age;
+    };
+    var showDetails =  function(){
+      return name + " has a type of " + type;
+    }
+    return {
+      getDetails: getDetails,
+      showDetails: showDetails
+    }
+  }
+  if(!uniqueInstance){
+    uniqueInstance = construct();
+    return uniqueInstance;
+  }
+}
+var factoryOne = new factoryPattern('dsd', 24, 'developer');
+console.log(factoryOne.getDetails());
+console.log(factoryOne.showDetails());
+var Person = function(name, age){
+  this.name = name;
+  this.age = age;
+}
+Person.prototype.getDetails = function(){
+  return this.name + " combined with " + this.age;
+}
+var Man = function(muscleCount){
+  this.muscles = muscleCount;
+}
+
+Man.prototype = new Person('ainwayi',30);
+Man.prototype.constructor = Man;
+
+var man1 = new Man(56);
+console.log(man1.hasOwnProperty('getDetails'));
+var inputArray = [1, 4, 45, 6, 5, 19];
+
+var comparisonNumber = 75;
+var sorted = inputArray.sort(function(a, b){
+  return a < b ? 1 : -1;
+});
+var result;
+Array.prototype.subArray = function(index, len){
+  var arr = [];
+  var length = len;
+  for(var j = index; length ; j++, length--){
+    if(this[j]){
+      arr.push(this[j]);
+    }
+  }
+  return arr;
+}
+for(var i = 1; i <= sorted.length; i++){
+  for(var j = 0; j <= sorted.length - i; j++){
+    var sub = sorted.subArray(j, i);
+    if(sub.reduce(function(a, b){
+      return a + b;
+    }) > comparisonNumber){
+      result = sub;
+      break;
+    }
+  }
+  if(result){
+    break;
+  }
+}
+if(result){
+  console.log(result);
+}
+var promise = new Promise(function(resolve, reject){
+  if(true){
+    setTimeout(function(){
+      resolve('success');
+    }, 3000);
+  }
+});
+
+promise.then(function(data){
+  console.log('received data is ' + data);
+});
+var memoizeFactorial = (fn) => {
+  var cache = {};
+  return function(key){
+    var args = arguments;
+    if(cache[key]){
+      return cache[key];
+    }
+    else{
+      cache[key] = fn(...args);
+      return cache[key];
+    }
+  }
+}
+let factorial = memoizeFactorial((n) => {
+  if(n === 0 || n === 1){
+    return 1;
+  }
+  else {
+    return n * factorial(n - 1);
+  }
+});
+var initial = performance.now();
+console.log(factorial(25));
+var final = performance.now();
+console.log(final - initial);
+var secondinitial = performance.now();
+console.log(factorial(26));
+var secondfinal = performance.now();
+console.log(secondfinal - secondinitial);
+</script>
+</body>
+</html>

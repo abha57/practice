@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<label >Input numbers only<input type="text" onkeypress="checkVal"></label>
+	<script>
+		// process.stdin.resume();
+		// process.stdin.setEncoding('ascii');
+		var input_stdin = "9\n-1 0 0 1 1 1 2 4 4\n0";
+		// var input_stdin_array = "";
+		// var input_currentline = 0;
+
+		// process.stdin.on('data', function (data) {
+		//     input_stdin += data;
+		// });
+
+
+		// process.stdin.on('end', function () {    
+		// //process.stdout.write(""+nodesArray+"\n");
+		// });
+		// Array.prototype.find = function(cb){
+		// 	if(this.length){
+		// 		var len = this.length;
+		// 		for(var i = 0; i < len; i++){
+		// 			var found = cb(this[i]);
+		// 			if(found){
+		// 				return found;
+		// 			}
+		// 		}
+		// 	}
+		// }
+		let checkRegex = new RegExp('/[0-9]/')
+		let checkVal = (e) => {
+			if(!checkRegex.test(this.value)){
+				this.value = this.value.split('');
+				this.value.splice(this.value.length - 1, 1);
+			}
+			e.preventDefault();
+		}
+		    var findNode = function(val){
+		        var node = nodesArray.find(function(node){
+		        	if(node.val === val){
+		        		return node;
+		        	}
+		        });
+		        return node;
+		    }
+		    var Node = function(val){
+		        this.val = val;
+		        this.children = [];
+		        if(typeof Node.prototype.setParent !== "function"){
+		            Node.prototype.setParent = function(parent){
+		                if(parent === -1){
+		                    this.parent = null;
+		                } else{
+		                    this.parent = findNode(parent);
+		                    this.parent.setChild(this);
+		                }
+		            }
+		        }
+		        if(typeof Node.prototype.setChild !== "function"){
+		            Node.prototype.setChild = function(child){
+		                if(typeof child === 'undefined' || !child.val){
+		                    return false;
+		                } else{
+		                    this.children.push(child);
+		                }
+		            }
+		        }
+		    }
+		    input_stdin_array = input_stdin.split("\n");
+			var output = '';
+			var nodes = Number(input_stdin_array[0]);
+			var parentNodeArray = input_stdin_array[1].split(" ").map(function(item){
+			    return Number(item);
+			});
+			var nodeToDelete = Number(input_stdin_array[2]);
+			var parentNodeArrayLen = parentNodeArray.length;
+			var nodesArray = [];
+			for(var i = 0; i < nodes; i++){
+			    nodesArray.push(new Node(i));
+			}
+			for(var j = 0; j < parentNodeArrayLen; j++){
+			     nodesArray[j].setParent(parentNodeArray[j]);
+			}
+			console.log(nodesArray);
+			let nodeToDeleteFn = function(node){
+				if(node.parent){
+					node.parent.children = [];
+					node.parent = null;
+					return true;
+				} else{
+					return false;
+				}
+			}
+			let leafNodes = [];
+			let countLeafNodes = function(node){
+				if(node && node.children && node.children.length){
+					node.children.forEach((childNode) => {
+						countLeafNodes(childNode);
+					})
+				} else{
+					leafNodes.push(node);
+				}
+			}	
+			(() => {
+				let nodeDeleted = nodeToDeleteFn(findNode(nodeToDelete));
+				if(nodeDeleted){
+					countLeafNodes(nodesArray[0]);
+					console.log(leafNodes);
+				} else{
+					console.log(0);
+				}
+			})();
+	</script>
+</body>
+</html>
