@@ -1,6 +1,9 @@
 import { TODOS } from '../constants/todos';
 
-const initialState = [];
+const initialState = {
+    addCount: 0,
+    removeCount: 0
+}
 
 export function TodosReducer(state = initialState, action) {
     switch(action.type) {

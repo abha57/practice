@@ -7,13 +7,14 @@
                   <span class="input-group-btn">
                     <button class="btn btn-primary" type="button" ng-disabled="!$ctrl.todo" ng-click="$ctrl.submitTodo($ctrl.todo)">Save</button>
                   </span>
+                  {{$ctrl.count.addCount}}...{{$ctrl.count.removeCount}}
                 </div><!-- /input-group -->
                  <hr>
             <ul class="list-unstyled">
                 <li class="ui-state-default" ng-repeat="todo in $ctrl.todos">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" ng-click="$ctrl.removeTodo($index)"> {{todo}}
+                            <input type="checkbox" ng-click="$ctrl.removeThis($index)"> {{todo}}
                         </label>
                     </div>
                 </li>

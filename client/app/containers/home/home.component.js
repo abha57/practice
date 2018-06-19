@@ -8,5 +8,4 @@ let homeComponent = {
   template,
   controller
 };
-
 export default homeComponent;

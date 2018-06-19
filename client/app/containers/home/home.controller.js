@@ -8,8 +8,14 @@ class HomeController {
   }
 
   submitTodo(){
+    this.keepAddCount();
     this.addTodo(this.todo);
     this.todo = '';
+  }
+
+  removeThis(index){
+    this.keepRemoveCount();
+    this.removeTodo(index);
   }
 
   $onDestroy(){
@@ -18,7 +24,8 @@ class HomeController {
 
   mapStateToThis(state) {
       return {
-          todos: state.todos
+          todos: state.todos,
+          count: state.keepCount
       };
   }
 }

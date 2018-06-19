@@ -13,5 +13,16 @@ function removeTodo(index){
         payload: index
     };
 }
+	
+function keepAddCount(){
+	return {
+        type: TODOS.KEEP_ADD_COUNT
+    };
+}
 
-export default { addTodo, removeTodo };
+function keepRemoveCount(){
+	return {
+        type: TODOS.KEEP_REMOVE_COUNT
+    };
+}
+export default { addTodo, removeTodo, keepAddCount, keepRemoveCount };
