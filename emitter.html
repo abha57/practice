@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<body>
+    <button id="clicked" click="attachEvent">click</button>
+    <script>
+        let eventEmitter = () => {
+            let events = {};
+            let subscribe = () => {
+
+            };
+            let attachEvent = (event, fn) => {
+                if(!events[event]) {
+                    events[event] = fn;
+                }
+            }
+            return {
+                subscribe: subscribe,
+                attachEvent: attachEvent
+            }
+        }
+        let button = document.getElementById('clicked');
+        
+    </script>
+</body>
+</html>

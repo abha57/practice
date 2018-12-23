@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const isEqual = (first, second) => {
+            let isObject = '[object Object]';
+            let isArray = '[object Array]';
+            let firstType = Object.prototype.toString.call(first);
+            // if( (firstType !== isObject || firstType !== isArray) && first !== second){
+            //     return false;
+            // }
+            if (firstType !== Object.prototype.toString.call(second)) {
+                return false;
+            }
+            if (['[object Array]', '[object Object]'].indexOf(firstType) < 0) {
+                return false;
+            }
+            if (firstType === isObject && Object.keys(first).length !== Object.keys(second).length) {
+                return false;
+            } else if (first.length !== second.length) {
+                return false;
+            }
+            let compare = (firstValue, secondValue) => {
+                return firstValue === secondValue;
+            }
+            if (firstType === isArray) {
+                for (let i = 0; i < first.length; i++) {
+                    if (Object.prototype.toString.call(first[i]) === isArray ||
+                        Object.prototype.toString.call(first[i]) === isObject) {
+                        return isEqual(first[i], second[i]);
+                    }
+                    if (!compare(first[i], second[i])) return false;
+                }
+            } else {
+                for (let key in first) {
+                    if (Object.prototype.toString.call(first[key]) === isArray ||
+                        Object.prototype.toString.call(first[key]) === isObject) {
+                        return isEqual(first[key], second[key]);
+                    }
+                    if (!compare(first[key], second[key])) return false;
+                }
+            }
+            return true;
+
+        }
+        let obj1 = {
+            a: 4,
+            b: {
+                c: [4, 5, 6],
+                d: "first"
+            },
+            e: true,
+
+        };
+        let obj2 = {
+            a: 4,
+            b: {
+                c: [4, 5, 6],
+                d: "frst"
+            },
+            e: true,
+
+        };
+        console.log('diff', isEqual(obj1, obj2));
+    </script>
+</body>
+
+</html>

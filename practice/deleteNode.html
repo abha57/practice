@@ -75,7 +75,7 @@
 			var output = '';
 			var nodes = Number(input_stdin_array[0]);
 			var parentNodeArray = input_stdin_array[1].split(" ").map(function(item){
-			    return Number(item);
+			    return parseInt(item);
 			});
 			var nodeToDelete = Number(input_stdin_array[2]);
 			var parentNodeArrayLen = parentNodeArray.length;

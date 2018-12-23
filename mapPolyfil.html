@@ -1,0 +1,32 @@
+<!Doctype html>
+    <head>
+
+    </head>
+    <body>
+        <input type="text" id='accNumber' name="accNumber" placeholder="Enter a number of more than 10 digits">
+        <button onclick="mask()">Mask</button>
+        <p id='demo'></p>
+    </body>
+    <script>  
+        const mask = (e) => {
+            const input = document.getElementById('accNumber').value;
+            const firstFour = input.slice(0,4);
+            const lastTwo = input.slice(-2);
+            const remaining = () => {
+                return new Array(input.length - 5).join('x');
+            }
+            document.getElementById('demo').innerHTML = firstFour.concat(remaining(), lastTwo);
+        }
+        Array.prototype.reduceIt = function(fn) {
+            if(Array.isArray(this)){
+                let aggregator = null;
+                this.map( (entry) => {
+                    aggregator = fn(aggregator, entry);
+                });
+                return aggregator;
+            } else return null;
+        }
+        const newArray = [6,7,8,9,10,11];
+        console.log('added', newArray.reduceIt( (sum, entry) => sum + entry));
+    </script>
+</html>

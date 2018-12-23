@@ -1,0 +1,28 @@
+<script>
+    let arr = [1,[2,3],4,5,[6,7,[8,9], 10]];
+    let flattenArray = (array, result) =>  {
+        let res = result || [];
+        array.forEach( (ele) => {
+            if(Array.isArray(ele)){
+                flattenArray(ele, res);
+            } else{
+                res.push(ele);
+            }
+        });
+        return res;
+    }
+    console.log(flattenArray(arr));
+
+    let arr1 = [1,2,3,1,1,2,2,2,3,3,3,6];
+    let frequency = (array) => {
+        let count = {};
+        array.forEach((ele)=>{
+            if(count[ele]) count[ele]++;
+            else{
+                count[ele] = 1;
+            }
+        });
+        return count;
+    }
+    console.log(frequency(arr1));
+</script>

@@ -1,0 +1,55 @@
+<script>
+    
+    Array.prototype.grouping = function(key){
+        // return this.reduce( (acc, obj) => {
+        //     var val = obj[key] || '';
+        //     if(!val) return acc;
+        //     if(!acc[val]){
+        //         acc[val] = [];
+        //     }
+        //     acc[val].push(obj);
+        //     return acc;
+        // });
+        let agg = {};
+        this.map( (entry) => {
+            let val = entry[key]; 
+            if(val && !agg[val]){
+                agg[val] = [];
+            } else if(val){
+                agg[val].push(entry);
+            }
+        });
+        return agg;
+    }
+    var arr = [{a:4,b:9,c:3}, {a:4,b:10}, {a:5, b:9}, {a:8, c:9 }];
+     console.log(arr.grouping('b'));
+    Array.prototype.popping = function(){
+        var last = this[this.length - 1];
+        this.length--;
+        return last;
+    };
+    Array.prototype.pushing = function(num){
+        this[this.length] = num;
+    }
+    const obj = {
+        k:"2",
+        prop1: [1,2,3,4,5],
+        prop2: {
+            pr1: {
+                pro1: 'abc'
+            },
+            pr2: [3,4,56]
+        },
+        prop3: {
+            pr3: {
+                pro2: [3,4,56]
+            }
+        }
+    }
+    const { prop2: { pr1: { pro1: random }}, k } = obj;
+    console.log('random', random);
+    console.log('k', k);
+    
+   
+    
+</script>

@@ -1,0 +1,129 @@
+Debit Card - Ecomm
+20210, Restored against Failed Payment (Debit Card - E-commerce),C
+,20256, Restored against Failed Payment or Transfer,C
+,20253, Cashback Received (Debit Card - Ecom(Rupay)),C
+,20252, Refund Received (Debit Card - Ecom(Rupay)),C
+,20255, Amount Added Back (Credit Adjustment),C
+,20251, Chargeback Received (Debit Card - Ecom(Rupay)),C
+,70235, Credit Adjustment (Debit Card - Ecom(Rupay)),C
+,20210, Paid using Debit Card (E-commerce),D
+,20214, Surcharge or Tip paid (Debit Card - Ecom(Rupay)),D
+,20254, Amount Deducted (Debit Adjustment),D
+,70234, Debit Adjustment (Debit Card - Ecom(Rupay)),D
+
+Net Banking
+60301, Refund Received (Savings Account),C
+,70230, Debit Card Cashback (E-comm),C
+,20259, P2B related refunds,C
+,80205, PPB NB Reversal,C
+,70283, PROMO CASHBACK NB,C
+,70284, PROMO REFUND NB,C
+,70280, ADD MONEY TO PPB USING DEBIT CARD,C
+,70281, ADD MONEY TO PPB USING GOLD,C
+,70282, ADD MONEY TO PPB USING WALLET,C
+,60202, Paid using Paytm Bank Account,D
+,80203, PPB NB Automatic Payment,D
+,80204, PPB NB Merchant Payment,D
+,20271, Money Transferred (CASA to CASA),D
+
+IMPS
+20212, Restored against Failed Transfer (IMPS),C
+,20211, Money Received (IMPS),C
+,20270, Money Received (CASA to CASA),C
+,20220, Money Received (Wallet to CASA),C
+,20213, Chargeback Received (IMPS),C
+,20255, Amount Added Back (Credit Adjustment),C
+,20212, Money Transferred (IMPS),D
+,20271, Money Transferred (CASA to CASA),D
+,20211, IMPS Inward Reversal,D
+,20257, Offline Payment Reversal(IMPS),C
+,20280, Added to Paytm Account,C
+
+NEFT
+20410, Money Received (NEFT),C
+,20420, Money Transferred (NEFT),D
+,60214, Cashback for Bank Transfer,C
+,40105, Interest for Delayed NEFT/RTGS Credit,C
+
+RTGS
+20430, Money Received (RTGS),C
+,20440, Money Transferred (RTGS),D
+
+UPI
+20501, Money Received (UPI),C
+,20503, Deducted against Failed Payment or Transfer (UPI),D
+,20504, Restored against Failed Payment or Transfer (UPI),C
+,20505, Chargeback Received (UPI),C
+,20506, UPI PG EXTERNAL BANK REFUND,C
+,20507, UPI PG PPB REFUND,C
+,20509, UPI PG FAILED REFUNDS PPB,C
+,20510, UPI PG FAILED REFUNDS EXTERNAL,C
+,20502, Money Transferred (UPI),D
+,20508, UPI MERCHANT CHARGEBACK,D
+
+SLFD
+20262, CBS SLFD POOL TO PARTNER BNK MIRROR ACCOUNT,C
+,20265, SLFD to CASA Movement2,C
+,20205, SLFD Interest Received,C
+,20260, SLFD to CASA movement,C
+,20264, Refund-Impulse buying (SLFD Mirror Account to CASA),C
+,20261, CASA to SLFD Movement2,D
+,20250, CASA to SLFD movement,D
+,20263, Impulse FD booking (CASA to SLFD Mirror Account),D
+
+BC App/Remittance
+60200, BC Cash IN (Cash Deposited as BC),C
+,20100, Cash Deposited at Branch,C
+,60201, BC Cash Out (Cash Withdrawn at BC),D
+,20110, Cash Withdrawn at Branch,D
+,60300, Refund against BC Cash Withdrawal (Refund against failed Cash Withdrawal at BC),C
+,60219, Penny drop charges(BC),D
+,60220, Paid for money transfer (BC),D
+,60222, Restored against failed Penny drop,C
+,60221, Restored against failed money transfer,C
+,60215, BC Payout,C
+,60216, Debit to BC for Customer Cash Deposit,D
+,60217, Credit to BC for Customer Cash Withdrawal,C
+,60205, Debit Card Fees,D
+,60206, Refund of Failed Debit Card Fees,C
+
+Debit Card - POS
+70206, Restored against Failed Payment (Debit Card - POS),C
+,70218, Credit Adjustment (Debit Card - POS),C
+,70220, Chargeback Received (Debit Card - POS),C
+,70215, Refund Received (Debit Card - POS),C
+,70219, Cashback Received (Debit Card - POS),C
+,70229, POS PreArbitration Acceptance,C
+,70203, Paid using Debit Card (POS),D
+,70204, Cash Withdrawn at POS,D
+,70205, Purchase with Cashback(Debit Card- POS),C
+,70217, Debit Adjustment (Debit Card - POS),D
+,70216, Surcharge or Tip paid (Debit Card - POS),D
+
+ATM/Recycler
+70202, Restored for Failed Withdrawal at ATM,C
+,70211, ATM Credit Adjustment,C
+,70225, ATM Chargeback Acceptance,C
+,70212, ATM Cashback,C
+,70228, ATM PreArbitration Acceptance,C
+,70208, ATM refund,C
+,70233, ATM CASH DEPOSIT,C
+,70201, Cash Withdrawn at ATM,D
+,70207, ATM Financial Charges,D
+,70232, ATM Nonfinancial Charges,D
+,70210, ATM Debit Adjustment,D
+,70209, ATM Tips and Surcharges,D
+
+NACH
+20601, Aadhaar-based Direct Benefit Received,C
+,20602, ACH Credit,C
+,20603, ACH Debit,D
+
+APY
+70241, REVERSAL OF AUTO-DEBIT FOR APY,C
+,70243, REFUND FOR FIRST-DEBIT FOR APY,C
+,70240, AUTO-DEBIT FOR APY,D
+,70242, FIRST-DEBIT FOR APY,D
+
+Recovery
+23000, Recovery from customer account against fraud/wrongful credit,D

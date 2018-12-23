@@ -1,0 +1,31 @@
+<!Doctype html>
+    <head>
+
+    </head>
+    <body>
+        <input type="text" id='accNumber' name="accNumber" placeholder="Enter a number of more than 10 digits">
+        <button onclick="calculateSum()">calculate</button>
+        <p id='demo'></p>
+    </body>
+    <script>   
+        let sum = function(a){
+            let result = a;
+            let add = function(b){
+                if(arguments.length > 0){
+                    result = result + b;
+                    return add;
+                }
+                return result;
+                
+            }
+            return add;
+        }
+        
+        let calculateSum = () => {
+            let toEvaluate = document.getElementById('accNumber').value;
+            console.log('sum', eval(toEvaluate));
+        }
+        
+
+    </script>
+</html>
