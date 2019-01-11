@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sum of Even terms in fibonacci</title>
+</head>
+<body>
+    <script>
+        let memoizeFibonacci = (() => {
+            const cache = {};
+            const func = (n) => {
+                if(n in cache){
+                    return cache[n];
+                }
+                if(n === 0 || n ===1){
+                    return n;
+                }
+                cache[n] = func(n - 1) + func(n - 2);
+                return cache[n];
+            };
+            return func;
+            
+        })();
+        
+        let sumEven = 0;
+        let num = 1;
+        let currentFiboValue = 1;
+        while(currentFiboValue < 4000000){
+            currentFiboValue = memoizeFibonacci(num);
+            if(currentFiboValue % 2 === 0){
+                sumEven += currentFiboValue;
+            }
+            num++;
+        }
+        console.log('sum of even fibo', sumEven);
+    </script>
+</body>
+</html>

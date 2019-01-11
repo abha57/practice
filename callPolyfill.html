@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Call polyfill</title>
+</head>
+<body>
+<script type='text/javascript'>
+    var obj = function(){};
+    obj.a = 1;
+    var random = function(){
+        console.log('a is ', this.a);
+    };
+    Function.prototype.callMe = function(context){
+        context.randomProp = this;
+        context.randomProp(); // Here we are changing the context passed in the arguments. This is not desired.
+        
+    };
+    random.callMe(obj);
+    console.log('obj', obj.randomProp.toString());
+</script>
+</body>
+</html>

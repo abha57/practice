@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tower range</title>
+</head>
+<body>
+    <script>
+        const printTowersRange = (towers, towersLen) => {
+            debugger;
+            let finalRange = '';
+            for(let i = towers - 1; i >= 0; i--){
+                let j = i - 1;
+                let range = 1;
+                while( j >= 0 && towersLen[j] <= towersLen[i]){
+                    range++;
+                    j--;
+                }
+                finalRange += range.toString() + ' ';
+            }
+            console.log(finalRange.split(' ').reverse().join(' '));
+        }
+        function main(inp){
+            const input = inp.split('\n');
+            const testCases = parseInt(input[0]);
+            let count = 1;
+            for(let i = 0; i < testCases; i++){
+                let towers = parseInt(input[count++]);
+                let towersLen = input[count++].split(' ').map(Number);
+                printTowersRange(towers, towersLen);
+            }
+        }
+        main('1\n7\n100 80 60 70 60 75 85')
+    </script>
+</body>
+</html>
