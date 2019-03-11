@@ -9,54 +9,7 @@
 </head>
 
 <body>
-    <script type='text/javascript'>
-        function main(input) {
-            let providedInput = input.split('\n');
-            let testCases = providedInput[0];
-            let games = [];
-            for(let i = 1; i <= parseInt(testCases); i++){
-                let game = providedInput[i];
-                let coins = parseInt(game.split(' ')[0]);
-                let picks = parseInt(game.split(' ')[1]);
-                games.push({
-                    coins,
-                    picks
-                });
-            }
-
-            const whoWins = (game) => {
-                let availableCoins = game.coins;
-                let round = 1;
-                let coinsToBePicked;
-                let leftCoins;
-                let winner='';
-                while(availableCoins >= 0){
-                    coinsToBePicked = Math.pow(game.picks, round);
-                    if(availableCoins - coinsToBePicked < 0){
-                        winner = 'Bob';
-                        break;
-                    }
-                    availableCoins -= coinsToBePicked;
-                    if(availableCoins - coinsToBePicked < 0){
-                        winner = 'Alice';
-                        break;
-                    }
-                    availableCoins -= coinsToBePicked;
-                    round++;
-                }
-                return winner;
-            }
-
-            for(let j = 0; j < games.length; j++){
-                if(whoWins(games[j]) === 'Alice'){
-                    console.log('Alice');
-                } else{
-                    console.log('Bob');
-                }
-            }
-        }
-        main('4\n10 3\n14 2\n18 10\n37 5');
-    </script>
+    <script type='text/javascript' src="./script.js"></script>
 </body>
 
 </html>
